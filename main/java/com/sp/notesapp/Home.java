@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class Home extends AppCompatActivity {
-
+    //change this to like NoteActivity/NoteDisplay
     private TextView welcomeMessageTV;
     private Button createNoteBtn;
 
@@ -77,13 +77,9 @@ public class Home extends AppCompatActivity {
         });
 
         recyclerView = findViewById(R.id.recyclerView);
-
         recyclerView.setHasFixedSize(true);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-
         recyclerView.setLayoutManager(linearLayoutManager);
-
 
         //get the notes from Firebase
         readNotesFromFirebase();

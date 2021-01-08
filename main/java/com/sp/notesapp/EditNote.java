@@ -3,6 +3,8 @@ package com.sp.notesapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -21,12 +23,14 @@ public class EditNote extends AppCompatActivity {
     private EditText noteTitleET,noteContentET;
     private Button editNoteButton;
     String noteTitle,noteContent,noteID;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note);
 
+        context = this;
         noteTitleET=findViewById(R.id.noteTitle_ET);
         noteContentET=findViewById(R.id.noteContent_ET);
 
@@ -49,6 +53,7 @@ public class EditNote extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 editNoteInFirebase();
+                ((Activity) context).finish();
             }
         });
 
