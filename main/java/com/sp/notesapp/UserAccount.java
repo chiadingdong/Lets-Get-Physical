@@ -34,7 +34,7 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
         user= mAuth.getCurrentUser();
         context = this;
 
-        welcomeMessageTV = findViewById(R.id.welcomeMessage_TV);
+        welcomeMessageTV = findViewById(R.id.welcomeMessageTV);
         logoutBtn = findViewById(R.id.logout_Btn);
 
         welcomeMessageTV.setText("Hi, "+user.getEmail()+"!");
@@ -76,8 +76,8 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
             public void onClick(DialogInterface dialog, int id) {
                         mAuth.signOut();
                         ((Activity)context).finish();
-                        //Intent loginActivity = new Intent(UserAccount.this,MainActivity.class);
-                        //startActivity(loginActivity);
+                        Intent loginActivity = new Intent(UserAccount.this,Login.class);
+                        startActivity(loginActivity);
                     }
                 }).setNegativeButton("No!", new DialogInterface.OnClickListener() {
                     @Override

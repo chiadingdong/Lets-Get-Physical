@@ -7,7 +7,7 @@
     tools:context=".UserAccount">
 
     <TextView
-        android:id="@+id/welcomeMessage_TV"
+        android:id="@+id/welcomeMessageTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hi"
@@ -28,7 +28,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMessage_TV"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMessageTV"
         app:layout_constraintVertical_bias="0.162" />
 
     <Button

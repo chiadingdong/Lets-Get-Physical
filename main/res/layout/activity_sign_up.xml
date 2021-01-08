@@ -7,17 +7,30 @@
     tools:context=".SignUp">
 
     <EditText
+        android:id="@+id/name_ET"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:ems="10"
+        android:hint="Please enter your name..."
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/email_ET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
         android:id="@+id/email_ET"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Please enter your email here..."
+        android:hint="Please enter your email..."
         android:inputType="textEmailAddress"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.346" />
+
 
     <EditText
         android:id="@+id/oldPassword_ET"
@@ -28,11 +41,10 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/email_ET"
-        app:layout_constraintHorizontal_bias="0.287"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/email_ET"
         app:layout_constraintTop_toBottomOf="@+id/email_ET"
-        app:layout_constraintVertical_bias="0.088" />
-
+        app:layout_constraintVertical_bias="0.103" />
 
     <EditText
         android:id="@+id/newPassword_ET"
@@ -54,9 +66,10 @@
         android:textColor="#FFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newPassword_ET"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintVertical_bias="0.181" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

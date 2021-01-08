@@ -17,7 +17,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class Login extends AppCompatActivity implements View.OnClickListener{
 
     private EditText emailET, passwordET;
     private Button loginBtn;
@@ -78,15 +78,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     {
                         hideProgressBar();
                         FirebaseUser user=mAuth.getCurrentUser();
-                        Toast.makeText(MainActivity.this, "Signed In : "+user.getEmail(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Signed In : "+user.getEmail(), Toast.LENGTH_SHORT).show();
 
-                        Intent userAccountActivity = new Intent(MainActivity.this, UserAccount.class);
+                        Intent userAccountActivity = new Intent(Login.this, Home.class);
                         startActivity(userAccountActivity);
                     }
                     else
                     {
                         hideProgressBar();
-                        Toast.makeText(MainActivity.this, "Some error occurred : "+task.getException(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Some error occurred : "+task.getException(), Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void handleSignUpClick() {
         Toast.makeText(this, "SignUp Now!", Toast.LENGTH_SHORT).show();
-        Intent signupIntent = new Intent(MainActivity.this,SignUp.class);
+        Intent signupIntent = new Intent(Login.this,SignUp.class);
         startActivity(signupIntent);
     }
 
@@ -107,7 +107,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void showProgressBar() {
         progessBarLayout.setVisibility(View.VISIBLE);
     }
-
-
 
 }
