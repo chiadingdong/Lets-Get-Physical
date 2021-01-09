@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -27,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Home extends AppCompatActivity {
     //change this to like NoteActivity/NoteDisplay
@@ -48,6 +50,12 @@ public class Home extends AppCompatActivity {
         welcomeMessageTV = findViewById(R.id.welcomeMessageTV);
         createNoteBtn = findViewById(R.id.createNoteBtn);
 
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+
         //Display out user's name
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootReference = firebaseDatabase.getReference(); //app root in firebase database.
@@ -64,7 +72,6 @@ public class Home extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
 
@@ -76,22 +83,16 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
 
         //get the notes from Firebase
         readNotesFromFirebase();
     }
 
-    private void readNotesFromFirebase() {
 
+    private void readNotesFromFirebase() {
         //read the notes in firebase database
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-
         DatabaseReference notesReference = firebaseDatabase.getReference().child("Users").child(currentUser.getUid()).child("Notes");
 
         notesReference.addValueEventListener(new ValueEventListener() {
@@ -106,13 +107,8 @@ public class Home extends AppCompatActivity {
                     note = noteSnapshot.getValue(Note.class);
                     note.setNoteID(noteSnapshot.getKey());
 
-                    //Toast.makeText(HomeActivity.this, "note : title : "+note.getNoteTitle() + " content "+note.getNoteContent() + " note key/ID "+note.getNoteID(), Toast.LENGTH_SHORT).show();
-                    // Log.i("mynote", "note : title : "+note.getNoteTitle() + " content "+note.getNoteContent() + " note key/ID "+note.getNoteID());
-
-                    //add note the arraylist of Notes.
-                    noteArrayList.add(note);
+                    noteArrayList.add(note);  //add note to the arraylist of Notes.
                 }
-
                 //TODO : SetUp Layout.
                 notesAdapter = new NotesAdapter(noteArrayList,mContext);
                 recyclerView.setAdapter(notesAdapter);
@@ -124,11 +120,10 @@ public class Home extends AppCompatActivity {
 
             }
         });
-
     }
 
-    public void deletNoteFromFirebase(String noteID) {
-        //delete the note in Firebase;
+
+    public void deletNoteFromFirebase(String noteID) {        //delete the note in Firebase;
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -154,6 +149,8 @@ public class Home extends AppCompatActivity {
         });
     }
 
+
+    //menu stuff
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -171,7 +168,21 @@ public class Home extends AppCompatActivity {
                 Intent userAccountIntent = new Intent(Home.this,UserAccount.class);
                 startActivity(userAccountIntent);
                 break;
+            case R.id.calendarEvent:
+                //Create event in calendar
+                Calendar cal = Calendar.getInstance();
+                Intent intent = new Intent(Intent.ACTION_EDIT);
+                intent.setData(CalendarContract.Events.CONTENT_URI);
+                intent.putExtra("beginTime", cal.getTimeInMillis());
+                intent.putExtra("allDay", true);
+                intent.putExtra("rrule", "FREQ=WEEKLY;WKST=SU;BYDAY=TU,TH");
+                intent.putExtra("endTime", cal.getTimeInMillis() + 60 * 60 * 1000);
+                intent.putExtra("title", "Workout using Lets Get Physical App!");
+                startActivity(intent);
+                break;
         }
+
+
         return super.onOptionsItemSelected(item);
     }
 

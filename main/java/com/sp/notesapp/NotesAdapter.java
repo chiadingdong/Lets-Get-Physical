@@ -27,17 +27,13 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         TextView noteTitle,noteContent,editNote,deleteNote;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             noteTitle = itemView.findViewById(R.id.note_title_TV);
             noteContent = itemView.findViewById(R.id.note_content_TV);
             editNote = itemView.findViewById(R.id.editTV);
             deleteNote=itemView.findViewById(R.id.deleteTV);
-
         }
     }
 
@@ -54,6 +50,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //TODO : We will set the data here.
+
 
         //position starts from zero. So initially it is zero.
         final Note note =noteList.get(position);

@@ -4,4 +4,7 @@
     <item
         android:id="@+id/userAccount"
         android:title="Account" />
+    <item
+        android:id="@+id/calendarEvent"
+        android:title="Plan your next workout!" />
 </menu>
