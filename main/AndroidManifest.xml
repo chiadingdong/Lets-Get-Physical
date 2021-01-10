@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notesapp">
+        <activity android:name=".Camera"></activity>
         <activity android:name=".EditNote" />
         <activity android:name=".CreateNote" />
         <activity
