@@ -1,4 +1,4 @@
-package com.sp.notesapp;
+ package com.sp.notesapp;
 
 import android.content.Context;
 import android.content.DialogInterface;

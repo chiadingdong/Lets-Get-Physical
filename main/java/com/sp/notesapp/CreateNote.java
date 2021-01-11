@@ -38,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -111,6 +112,7 @@ public class CreateNote extends AppCompatActivity {
         DatabaseReference notesReference = rootReference.child("Users").child(currentUser.getUid()).child("Notes"); // root/Users/{currentUserID}/Notes
 
         DatabaseReference newNoteReference = notesReference.push();                           // root/Users/{currentUserID}/Notes/someRandomIdGeneratedByFirebase
+
 
         //someID  : {noteTitle : "noteTitle", noteContent : "noteContent"} Note class will have these two properties, noteTitle and noteContent.
 
