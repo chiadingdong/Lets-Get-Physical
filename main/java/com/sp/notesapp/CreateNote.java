@@ -107,31 +107,36 @@ public class CreateNote extends AppCompatActivity {
 
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
 
-        DatabaseReference rootReference= firebaseDatabase.getReference(); //reference to database-root here.
+        DatabaseReference rootReference = firebaseDatabase.getReference(); //reference to database-root here.
 
         DatabaseReference notesReference = rootReference.child("Users").child(currentUser.getUid()).child("Notes"); // root/Users/{currentUserID}/Notes
 
         DatabaseReference newNoteReference = notesReference.push();                           // root/Users/{currentUserID}/Notes/someRandomIdGeneratedByFirebase
 
+        //check for empty fields
+        if (noteTitle.getText().toString().isEmpty()) {
+            Toast.makeText(CreateNote.this, "Enter Title", Toast.LENGTH_SHORT).show();
+        } else if (noteContent.getText().toString().isEmpty()) {
+            Toast.makeText(CreateNote.this, "Enter Description", Toast.LENGTH_SHORT).show();
+        } else {
+            try {
+                Note newNote = new Note(noteTitle.getText().toString(), noteContent.getText().toString(), imageUri.toString());
 
-        //someID  : {noteTitle : "noteTitle", noteContent : "noteContent"} Note class will have these two properties, noteTitle and noteContent.
-
-        Note newNote = new Note(noteTitle.getText().toString(),noteContent.getText().toString(), imageUri.toString());
-
-        newNoteReference.setValue(newNote).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
-                {
-                    Toast.makeText(CreateNote.this, "Note submitted in Firebase.", Toast.LENGTH_SHORT).show();
-                    mContext.finish(); //finish this activity.
-                }
-                else
-                {
-                    Toast.makeText(CreateNote.this, "Some error occurred :  "+task.getException(), Toast.LENGTH_SHORT).show();
-                }
+                newNoteReference.setValue(newNote).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(CreateNote.this, "Note submitted in Firebase.", Toast.LENGTH_SHORT).show();
+                            mContext.finish(); //finish this activity.
+                        } else {
+                            Toast.makeText(CreateNote.this, "Some error occurred :  " + task.getException(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            } catch(Exception e){
+                Toast.makeText(CreateNote.this, "Please upload an image", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
     }
 
 

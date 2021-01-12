@@ -79,8 +79,9 @@ public class SignUp extends AppCompatActivity {
                                 Toast.makeText(SignUp.this, "SignUp is successful for : " + user.getEmail(), Toast.LENGTH_SHORT).show();
 
                                 saveNameInFirebaseRealtimeDatabase(user);
+                                ((Activity) context).finish();
                             } else {
-                                Toast.makeText(SignUp.this, "Error occurred : " + task.getException(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "Email is taken. Please enter another email!", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
