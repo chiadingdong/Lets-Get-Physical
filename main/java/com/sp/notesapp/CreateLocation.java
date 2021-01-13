@@ -76,7 +76,7 @@ public class CreateLocation extends AppCompatActivity {
 
             DatabaseReference newLocationRef = locationReference.push();
 
-            LocationModel location = new LocationModel(title, mrt, descrip, imageStr, latDouble, longDouble);
+            LocationModel location = new LocationModel(title, descrip , mrt, imageStr, latDouble, longDouble);
 
             newLocationRef.setValue(location).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override

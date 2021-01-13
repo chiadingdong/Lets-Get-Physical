@@ -63,7 +63,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final LocationModel location = locationList.get(position);
         holder.title.setText(location.getTitle());
-        holder.mrt.setText("Nearest Mrt: "+location.getNearestMrt());
+        holder.mrt.setText("How to get there: "+location.getNearestMrt());
         holder.description.setText(location.getDescription());
         holder.image.setImageBitmap(stringToBitMap(location.getImage()));
     }

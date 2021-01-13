@@ -35,7 +35,8 @@ public class LocationDisplay extends AppCompatActivity {
         setContentView(R.layout.activity_location_display2);
 
         mRecyclerView = findViewById(R.id.locationsList);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(LocationDisplay.this, RecyclerView.VERTICAL, false);        mRecyclerView.setLayoutManager(linearLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(LocationDisplay.this, RecyclerView.VERTICAL, false);
+        mRecyclerView.setLayoutManager(linearLayoutManager);
 
 
         readLocationFromFirebase();
