@@ -48,15 +48,16 @@ public class CreateNote extends AppCompatActivity {
     private Button createNewNoteBtn;
     private CreateNote mContext;
 
-    //for camera & gallery
-    public static final int CAMERA_PERM_CODE = 101;
-    public static final int CAMERA_REQUEST_CODE = 102;
-    public static final int GALLERY_REQUEST_CODE = 105;
     ImageView selectedImage;
     Button cameraBtn,galleryBtn;
     String currentPhotoPath;
     StorageReference storageReference;
     private Uri imageUri;
+
+    //for camera & gallery
+    public static final int CAMERA_PERM_CODE = 101;
+    public static final int CAMERA_REQUEST_CODE = 102;
+    public static final int GALLERY_REQUEST_CODE = 105;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,7 @@ public class CreateNote extends AppCompatActivity {
 
         DatabaseReference notesReference = rootReference.child("Users").child(currentUser.getUid()).child("Notes"); // root/Users/{currentUserID}/Notes
 
-        DatabaseReference newNoteReference = notesReference.push();                           // root/Users/{currentUserID}/Notes/someRandomIdGeneratedByFirebase
+        DatabaseReference newNoteReference = notesReference.push();    // root/Users/{currentUserID}/Notes/someRandomIdGeneratedByFirebase
 
         //check for empty fields
         if (noteTitle.getText().toString().isEmpty()) {

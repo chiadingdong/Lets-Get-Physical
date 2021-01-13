@@ -4,6 +4,7 @@ package com.sp.notesapp;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyView
         holder.title.setText(location.getTitle());
         holder.mrt.setText("Nearest Mrt: "+location.getNearestMrt());
         holder.description.setText(location.getDescription());
-        holder.image.setImageBitmap(getBitmapFromBytes(location.getImage()));
+        holder.image.setImageBitmap(stringToBitMap(location.getImage()));
     }
 
     @Override
@@ -77,12 +78,14 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.MyView
         void onItemClicked(LocationModel location);
     }
 
-    //Compress image
-    public static Bitmap getBitmapFromBytes(byte[] bytes) {
-        if (bytes != null) {
-            return BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+    public Bitmap stringToBitMap(String encodedString){
+        try {
+            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
+            return BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+        } catch (Exception e) {
+            e.getMessage();
+            return null;
         }
-        return null;
     }
 
 }

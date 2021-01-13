@@ -31,8 +31,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class DisplayNote extends AppCompatActivity {
-    //change this to like NoteActivity/NoteDisplay
-    private TextView welcomeMessageTV;
+
     private Button createNoteBtn;
 
     private RecyclerView recyclerView;
@@ -47,7 +46,6 @@ public class DisplayNote extends AppCompatActivity {
         setContentView(R.layout.activity_display_note);
 
         mContext =this;
-        welcomeMessageTV = findViewById(R.id.welcomeMessageTV);
         createNoteBtn = findViewById(R.id.createNoteBtn);
 
         recyclerView = findViewById(R.id.recyclerView);

@@ -3,16 +3,20 @@ package com.sp.notesapp;
 public class LocationModel {
 
     private String title, description, nearestMrt;
-    private byte[] image;
+    private String image;
     private double lat,lon;
 
-    public LocationModel(String title,String description, String nearestMrt, byte[] image, double lat, double lon) {
+    public LocationModel(String title,String description, String nearestMrt, String image, double lat, double lon) {
         this.title = title;
         this.description = description;
         this.nearestMrt = nearestMrt;
         this.image = image;
         this.lat = lat;
         this.lon = lon;
+    }
+
+    public LocationModel() {
+
     }
 
     public String getTitle() {
@@ -27,7 +31,7 @@ public class LocationModel {
         return nearestMrt;
     }
 
-    public byte[] getImage() {
+    public String getImage() {
         return image;
     }
 
