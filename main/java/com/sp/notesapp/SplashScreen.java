@@ -2,6 +2,7 @@ package com.sp.notesapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,18 +32,19 @@ public class SplashScreen extends AppCompatActivity {
                 if(currentUser!=null)
                 {
                     //user is already logged in.
+                    finish();
                     Intent homeIntent = new Intent(SplashScreen.this, Home.class);
                     startActivity(homeIntent);
                 }
                 else
                  {
-                    //user is not logged in, then show login activity.
+                     finish();
+                     //user is not logged in, then show login activity.
                     Intent loginIntent = new Intent(SplashScreen.this, Login.class);
                     startActivity(loginIntent);
                 }
 
             }
         },1500); //1.5 sec
-
     }
 }

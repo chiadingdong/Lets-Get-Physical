@@ -72,7 +72,7 @@ public class UpdateEmail extends AppCompatActivity {
                         }
                         else
                         {
-                            Toast.makeText(UpdateEmail.this, "Some error occured : "+task.getException(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UpdateEmail.this, "Email is already in use.Please enter another email", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

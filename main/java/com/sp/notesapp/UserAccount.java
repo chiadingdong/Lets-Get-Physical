@@ -68,7 +68,6 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
         }
     }
 
-
     private void showLogoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Are you sure you want to logout?").setPositiveButton("Yes.", new DialogInterface.OnClickListener() {

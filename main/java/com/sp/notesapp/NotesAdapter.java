@@ -1,11 +1,13 @@
-package com.sp.notesapp;
+ package com.sp.notesapp;
 
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> {
 
@@ -28,12 +32,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView noteTitle,noteContent,editNote,deleteNote;
+        ImageView cardImageView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             noteTitle = itemView.findViewById(R.id.note_title_TV);
             noteContent = itemView.findViewById(R.id.note_content_TV);
             editNote = itemView.findViewById(R.id.editTV);
             deleteNote=itemView.findViewById(R.id.deleteTV);
+            cardImageView= itemView.findViewById(R.id.cardImage);
         }
     }
 
@@ -51,11 +57,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //TODO : We will set the data here.
 
-
         //position starts from zero. So initially it is zero.
         final Note note =noteList.get(position);
         holder.noteTitle.setText(note.getNoteTitle());
         holder.noteContent.setText(note.getNoteContent());
+        Glide.with(mContext).load(noteList.get(position).getImageUri()).into(holder.cardImageView);
 
 
         holder.editNote.setOnClickListener(new View.OnClickListener() {

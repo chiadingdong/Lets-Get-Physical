@@ -3,6 +3,7 @@ package com.sp.notesapp;
 import com.google.firebase.database.Exclude;
 
 public class Note {
+    String imageUri;
     String noteTitle, noteContent;
 
     @Exclude
@@ -12,10 +13,13 @@ public class Note {
         //this is required for firebase
     }
 
-    public Note(String noteTitle, String noteContent) {
+    public Note(String noteTitle, String noteContent, String imageUri) {
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
+        this.imageUri = imageUri;
     }
+
+
 
     @Exclude
     public String getNoteID() {
@@ -28,6 +32,14 @@ public class Note {
     }
 
 
+
+    public String getImageUri() {
+        return imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
+    }
 
     public String getNoteTitle() {
         return noteTitle;
