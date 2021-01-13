@@ -101,7 +101,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                 .setPositiveButton("Yes.", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         //delete the note here.
-                        ((Home)mContext).deletNoteFromFirebase(noteID); //HomeActivity.deleteNoteFromFirebase();
+                        ((DisplayNote)mContext).deletNoteFromFirebase(noteID); //HomeActivity.deleteNoteFromFirebase();
 
                     }
                 })
