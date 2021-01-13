@@ -57,7 +57,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         //TODO : We will set the data here.
 
-
         //position starts from zero. So initially it is zero.
         final Note note =noteList.get(position);
         holder.noteTitle.setText(note.getNoteTitle());

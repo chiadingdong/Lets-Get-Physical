@@ -53,6 +53,8 @@ public class Home extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        //if want reverse format
+        //LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL, true);
         recyclerView.setLayoutManager(linearLayoutManager);
 
 
