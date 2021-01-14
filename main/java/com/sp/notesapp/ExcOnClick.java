@@ -8,14 +8,18 @@ import android.view.MotionEvent;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 public class ExcOnClick extends AppCompatActivity {
     private WebView view;
+    private TextView description;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exc_on_click);
+
+        description = findViewById(R.id.instructionsTV);
         view = (WebView) findViewById(R.id.mWebView);
 
         view.setWebViewClient(new WebViewClient() {
@@ -30,7 +34,12 @@ public class ExcOnClick extends AppCompatActivity {
         view.getSettings().setAppCachePath(getCacheDir().getAbsolutePath());
         view.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         view.getSettings().setMediaPlaybackRequiresUserGesture(false);
-        String vidUrl = "https://www.youtube.com/embed/ECxYJcnvyMw";
+        //String vidUrl = "https://www.youtube.com/embed/ECxYJcnvyMw";
+
+        String vidUrl = getIntent().getStringExtra("VIDEOURL");
+        String descrip = getIntent().getStringExtra("DESCRIP");
+
+        description.setText(descrip);
         view.loadUrl(vidUrl);
     }
 

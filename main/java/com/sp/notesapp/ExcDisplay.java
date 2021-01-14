@@ -69,8 +69,8 @@ public class ExcDisplay extends AppCompatActivity {
                     public void onItemClicked(ExcModel exercise)
                     {
                         Intent intent = new Intent(ExcDisplay.this,ExcOnClick.class);
-                        //intent.putExtra("LATITUDE",location.getLat());
-                        //intent.putExtra("NAME",location.getTitle());
+                        intent.putExtra("VIDEOURL",exercise.getVideoUrl());
+                        intent.putExtra("DESCRIP",exercise.getDescription());
                         startActivity(intent);
                     }
                 });
