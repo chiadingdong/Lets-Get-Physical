@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateLocation">
+    tools:context=".CreateExc">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="Mrt"
+            android:hint="TimeCal"
             android:inputType="textPersonName" />
 
         <EditText
@@ -48,20 +48,12 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/locationLat"
+            android:id="@+id/excVideoURl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="lat"
-            android:inputType="numberDecimal" />
-
-        <EditText
-            android:id="@+id/locationLon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="lon"
-            android:inputType="numberDecimal" />
+            android:hint="videoURL"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/excSaveBtn"

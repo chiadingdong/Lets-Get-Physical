@@ -64,7 +64,7 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
 
         switch (view.getId()){
             case R.id.excBtn:
-                intent = new Intent(Home.this,DisplayNote.class);
+                intent = new Intent(Home.this,ExcDisplay.class);
                 startActivity(intent);
                 break;
             case R.id.notesBtn:

@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 public class LocationDisplay extends AppCompatActivity {
 
-    private Button addLocation;
+    //private Button addLocation;
     private RecyclerView mRecyclerView;
     private ArrayList<LocationModel> locationList = new ArrayList<>();
 
@@ -38,11 +38,10 @@ public class LocationDisplay extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(LocationDisplay.this, RecyclerView.VERTICAL, false);
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-
         readLocationFromFirebase();
 
-        addLocation = findViewById(R.id.addLocation);
-        addLocation.setOnClickListener(add_Location);
+        //addLocation = findViewById(R.id.addLocation);
+        //addLocation.setOnClickListener(add_Location);
 
     }
 
@@ -91,14 +90,14 @@ public class LocationDisplay extends AppCompatActivity {
             }
         });
     }
-
+/*
     View.OnClickListener add_Location = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(LocationDisplay.this,CreateLocation.class));
         }
     };
-
+    */
 
 
 }

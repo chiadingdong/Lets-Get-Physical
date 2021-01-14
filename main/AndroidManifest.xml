@@ -10,6 +10,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +19,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notesapp">
-        <activity android:name=".CreateLocation"></activity>
+        <activity android:name=".ExcDisplay"></activity>
+        <activity android:name=".CreateExc" />
+        <activity android:name=".ExcOnClick" />
+        <activity android:name=".CreateLocation" />
         <activity android:name=".LocationDisplay" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

@@ -22,28 +22,23 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.ByteArrayOutputStream;
 
-public class CreateLocation extends AppCompatActivity {
+public class CreateExc extends AppCompatActivity {
 
-    private EditText locationTitle, locationMrt, locationDescrip;
-    private EditText lat, lon;
+    private EditText excTitle, excTimeNCal, excDescrip, videoURL;
     private Button galleryBtn, saveBtn;
     private ImageView displayImage;
-    private CreateLocation mContext;
 
     private static final int GALLERY_REQUEST_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_location);
+        setContentView(R.layout.activity_create_exc);
 
-        //alright, my findViewByID all messedup, cause i copied paste this xml code into create_exc.xml
-        mContext = CreateLocation.this;
-        locationTitle = findViewById(R.id.excTitle);
-        locationMrt = findViewById(R.id.excTimeCal);
-        locationDescrip = findViewById(R.id.excDescrip);
-        lat = findViewById(R.id.locationLat);
-        lon = findViewById(R.id.locationLon);
+        excTitle = findViewById(R.id.excTitle);
+        excTimeNCal = findViewById(R.id.excTimeCal);
+        excDescrip = findViewById(R.id.excDescrip);
+        videoURL = findViewById(R.id.excVideoURl);
 
         displayImage = findViewById(R.id.excImageUpload);
 
@@ -52,19 +47,16 @@ public class CreateLocation extends AppCompatActivity {
 
         saveBtn = findViewById(R.id.excSaveBtn);
         saveBtn.setOnClickListener(uploadToFirebase);
-
     }
 
     View.OnClickListener uploadToFirebase = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
-            String title = locationTitle.getText().toString();
-            String mrt = locationMrt.getText().toString();
-            String descrip = locationDescrip.getText().toString();
-
-            double latDouble = Double.parseDouble(lat.getText().toString());
-            double longDouble = Double.parseDouble(lon.getText().toString());
+            String title = excTitle.getText().toString();
+            String timeNCal = excTimeNCal.getText().toString();
+            String descrip = excDescrip.getText().toString();
+            String vidUrl = videoURL.getText().toString();
 
             BitmapDrawable drawable = (BitmapDrawable) displayImage.getDrawable();
             Bitmap bitmap = drawable.getBitmap();
@@ -72,20 +64,20 @@ public class CreateLocation extends AppCompatActivity {
 
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference rootReference = firebaseDatabase.getReference(); //reference to database-root here.
-            DatabaseReference locationReference = rootReference.child("Location");
+            DatabaseReference excReference = rootReference.child("Exercises");
 
-            DatabaseReference newLocationRef = locationReference.push();
+            DatabaseReference newExcRef = excReference.push();
 
-            LocationModel location = new LocationModel(title, descrip , mrt, imageStr, latDouble, longDouble);
+            ExcModel exercise = new ExcModel(imageStr, title, timeNCal, descrip, vidUrl);
 
-            newLocationRef.setValue(location).addOnCompleteListener(new OnCompleteListener<Void>() {
+            newExcRef.setValue(exercise).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        Toast.makeText(CreateLocation.this, "Note submitted in Firebase.", Toast.LENGTH_SHORT).show();
-                        mContext.finish(); //finish this activity.
+                        Toast.makeText(CreateExc.this, "Note submitted in Firebase.", Toast.LENGTH_SHORT).show();
+                        finish();
                     } else {
-                        Toast.makeText(CreateLocation.this, "Some error occurred :  " + task.getException(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CreateExc.this, "Some error occurred :  " + task.getException(), Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -120,5 +112,4 @@ public class CreateLocation extends AppCompatActivity {
         byte[] b = baos.toByteArray();
         return Base64.encodeToString(b, Base64.DEFAULT);
     }
-
 }
