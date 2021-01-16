@@ -22,6 +22,7 @@ import androidx.cardview.widget.CardView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
@@ -41,8 +42,9 @@ import java.util.Calendar;
 
 public class Home extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener {
 
-    CardView exerciseCV, diaryCV, locationCV, planWorkoutCV, accountCv, logoutCv;
+    TextView welcomeMsg;
 
+    CardView exerciseCV, diaryCV, locationCV, planWorkoutCV, accountCv, logoutCv;
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
@@ -55,9 +57,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home);
 
-        mAuth= FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
         context = this;
 
+        welcomeMsg = findViewById(R.id.welcomeMsg);
         exerciseCV = findViewById(R.id.exerciseCV);
         diaryCV = findViewById(R.id.diaryCV);
         locationCV = findViewById(R.id.locationCV);
@@ -89,6 +92,27 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         toggle.syncState();
 
         navigationView.setCheckedItem(R.id.nav_home);
+
+
+        //Display welcome message with user's name
+
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference rootReference = firebaseDatabase.getReference(); //app root in firebase database.
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        DatabaseReference nameReference = rootReference.child("Users").child(currentUser.getUid()).child("name");
+
+        nameReference.addListenerForSingleValueEvent(new ValueEventListener() { //this will get triggered at least once.
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                //dataSnapshot will have = {name: "Aman"} key =name, value = Aman.
+                welcomeMsg.setText("Welcome " + dataSnapshot.getValue().toString());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     //Cardview
@@ -173,19 +197,19 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
 
     private void showLogoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setMessage("Are you sure you want to logout?").setPositiveButton("Yes.", new DialogInterface.OnClickListener() {
+        builder.setMessage("Are you sure you want to logout?").setPositiveButton("No.", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                dialog.dismiss();
+            }
+        }).setNegativeButton("Yes.", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 mAuth.signOut();
                 ((Activity) context).finish();
                 Intent loginActivity = new Intent(Home.this, Login.class);
                 startActivity(loginActivity);
-            }
-        }).setNegativeButton("No!", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                // User cancelled the dialog
-                dialog.dismiss();
             }
         });
 
@@ -231,22 +255,3 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
     }
     */
 
-//Display welcome message with user's name
-        /*
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference rootReference = firebaseDatabase.getReference(); //app root in firebase database.
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        DatabaseReference nameReference = rootReference.child("Users").child(currentUser.getUid()).child("name");
-
-        nameReference.addListenerForSingleValueEvent(new ValueEventListener() { //this will get triggered at least once.
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                //dataSnapshot will have = {name: "Aman"} key =name, value = Aman.
-                welcomeMsg.setText("Welcome, "+dataSnapshot.getValue().toString()+"!");
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        }); */

@@ -82,6 +82,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
                         Intent userAccountActivity = new Intent(Login.this, Home.class);
                         startActivity(userAccountActivity);
+                        finish();
                     }
                     else
                     {
