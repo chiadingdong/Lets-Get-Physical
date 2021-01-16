@@ -19,11 +19,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Notesapp">
-        <activity android:name=".ExcDisplay"></activity>
+        <activity
+            android:name=".ExcDisplay"
+            android:parentActivityName=".Home" />
         <activity android:name=".CreateExc" />
         <activity android:name=".ExcOnClick" />
         <activity android:name=".CreateLocation" />
-        <activity android:name=".LocationDisplay" />
+        <activity
+            android:name=".LocationDisplay"
+            android:parentActivityName=".Home" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -39,8 +43,12 @@
         <activity
             android:name=".LocationMaps"
             android:label="@string/title_activity_location_maps" />
-        <activity android:name=".Home" />
-        <activity android:name=".DisplayNote" />
+        <activity
+            android:name=".Home"
+            android:theme="@style/Theme.NotesappNoActionBar" />
+        <activity
+            android:name=".DisplayNote"
+            android:parentActivityName=".Home" />
         <activity android:name=".EditNote" />
         <activity android:name=".CreateNote" />
         <activity
@@ -48,7 +56,9 @@
             android:theme="@style/Theme.NotesappNoActionBar" />
         <activity android:name=".UpdateEmail" />
         <activity android:name=".UpdatePassword" />
-        <activity android:name=".UserAccount" />
+        <activity
+            android:name=".UserAccount"
+            android:parentActivityName=".Home" />
         <activity android:name=".SignUp" />
         <activity
             android:name=".SplashScreen"

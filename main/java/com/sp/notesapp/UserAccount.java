@@ -37,7 +37,7 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
         welcomeMessageTV = findViewById(R.id.welcomeMessageTV);
         logoutBtn = findViewById(R.id.logout_Btn);
 
-        welcomeMessageTV.setText("Hi, "+user.getEmail()+"!");
+        welcomeMessageTV.setText("Email Address: "+user.getEmail()+"!");
         logoutBtn.setOnClickListener(this);
 
         updatePasswordBtn =findViewById(R.id.update_password_btn);
