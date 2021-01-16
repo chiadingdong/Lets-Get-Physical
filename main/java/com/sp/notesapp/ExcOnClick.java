@@ -43,6 +43,7 @@ public class ExcOnClick extends AppCompatActivity {
         view.loadUrl(vidUrl);
     }
 
+    //add a onBackPress method that shows dialog, so that when users working out, they don't accidentally go back
     @Override
     public void onBackPressed(){
         if(view.canGoBack()){
@@ -73,7 +74,6 @@ public class ExcOnClick extends AppCompatActivity {
         });
     }
 
-    //add a onBackPress method that shows dialog, so that when users working out, they don't accidentally go back
 
 
 }

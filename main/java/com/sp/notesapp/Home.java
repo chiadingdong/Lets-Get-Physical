@@ -86,6 +86,10 @@ public class Home extends AppCompatActivity implements View.OnClickListener{
     }
 
 
+
+
+
+
     //menu stuff
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
