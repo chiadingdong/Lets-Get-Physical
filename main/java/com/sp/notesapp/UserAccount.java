@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class UserAccount extends AppCompatActivity implements View.OnClickListener {
 
     private TextView welcomeMessageTV;
-    private Button logoutBtn, updatePasswordBtn, updateEmailBtn;
+    private Button updatePasswordBtn, updateEmailBtn;
 
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -35,10 +35,8 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
         context = this;
 
         welcomeMessageTV = findViewById(R.id.welcomeMessageTV);
-        logoutBtn = findViewById(R.id.logout_Btn);
 
-        welcomeMessageTV.setText("Email Address: " + user.getEmail() + "!");
-        logoutBtn.setOnClickListener(this);
+        welcomeMessageTV.setText("Email Address: " + user.getEmail());
 
         updatePasswordBtn = findViewById(R.id.update_password_btn);
         updatePasswordBtn.setOnClickListener(this);
@@ -52,9 +50,6 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
         int id = view.getId();
 
         switch (id) {
-            case R.id.logout_Btn:
-                showLogoutDialog();
-                break;
 
             case R.id.update_password_btn:
                 showUpdatePasswordActivity();
@@ -66,7 +61,7 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
 
         }
     }
-
+    /*
     private void showLogoutDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage("Are you sure you want to logout?").setPositiveButton("No.", new DialogInterface.OnClickListener() {
@@ -87,7 +82,7 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-    }
+    } */
 
     private void showUpdatePasswordActivity() {
         Toast.makeText(context, "Update Password here!", Toast.LENGTH_SHORT).show();

@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                     }
                     else
                     {
-                        Toast.makeText(Login.this, "Some error occurred : "+task.getException(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Incorrect Email or Password.", Toast.LENGTH_LONG).show();
                     }
                 }
             });

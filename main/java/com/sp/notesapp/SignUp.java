@@ -81,18 +81,18 @@ public class SignUp extends AppCompatActivity {
                                 saveNameInFirebaseRealtimeDatabase(user);
                                 ((Activity) context).finish();
                             } else {
-                                Toast.makeText(SignUp.this, "Email is taken. Please enter another email!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUp.this, "Email is taken. Please enter another email.", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
                 } else {
-                        Toast.makeText(this, "Passwords don't match. Please enter again!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Passwords don't match. Please enter again.", Toast.LENGTH_SHORT).show();
                 }
             }
         }
         else //name is empty.
         {
-            Toast.makeText(this, "Please enter a name!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enter a name.", Toast.LENGTH_SHORT).show();
         }
     }
 
