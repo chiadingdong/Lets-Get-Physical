@@ -81,6 +81,8 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
 
+        //navigationView.setItemIconTintList(null);
+
         navigationView.setNavigationItemSelectedListener(this);
 
         setSupportActionBar(toolbar);
@@ -95,7 +97,6 @@ public class Home extends AppCompatActivity implements View.OnClickListener, Nav
 
 
         //Display welcome message with user's name
-
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference rootReference = firebaseDatabase.getReference(); //app root in firebase database.
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
