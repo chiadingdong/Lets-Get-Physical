@@ -15,38 +15,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.105" />
+        app:layout_constraintVertical_bias="0.17000002" />
 
     <Button
         android:id="@+id/update_email_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:background="@drawable/round_border"
         android:drawableLeft="@drawable/ic_white_email"
         android:text="Update Email"
         android:textColor="#FFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMessageTV"
-        app:layout_constraintVertical_bias="0.162" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeMessageTV" />
 
     <Button
         android:id="@+id/update_password_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="236dp"
+        android:layout_marginTop="110dp"
         android:background="@drawable/round_border"
         android:drawableLeft="@drawable/ic_white_lock"
         android:text="Update Password"
         android:textColor="#FFF"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_email_btn"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintEnd_toEndOf="@+id/update_email_btn"
+        app:layout_constraintStart_toStartOf="@+id/update_email_btn"
+        app:layout_constraintTop_toBottomOf="@+id/update_email_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
