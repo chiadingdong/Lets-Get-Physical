@@ -74,6 +74,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.ViewHolder> 
                 editNoteIntent.putExtra("noteTitle", note.getNoteTitle());
                 editNoteIntent.putExtra("noteContent", note.getNoteContent());
                 editNoteIntent.putExtra("noteID", note.getNoteID());
+                editNoteIntent.putExtra("imageUri", note.getImageUri());
 
                 mContext.startActivity(editNoteIntent);
             }

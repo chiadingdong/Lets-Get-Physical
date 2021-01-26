@@ -120,7 +120,7 @@ public class DisplayNote extends AppCompatActivity {
 
                 if(task.isSuccessful())
                 {
-                    Toast.makeText(mContext, "Note is deleted, successfully!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Note successfully deleted.", Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
