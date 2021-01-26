@@ -27,7 +27,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
     private String email,password;
 
     private FirebaseAuth mAuth;
-    private View progessBarLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +42,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         signUpText.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
-        progessBarLayout = findViewById(R.id.progressBar);
 
     }
 
@@ -65,7 +63,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
 
     private void handleLoginBtnClick() {
 
-        showProgressBar();
         email = emailET.getText().toString();
         password = passwordET.getText().toString();
 
@@ -76,17 +73,16 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
                     {
-                        hideProgressBar();
                         FirebaseUser user=mAuth.getCurrentUser();
                         Toast.makeText(Login.this, "Signed In : "+user.getEmail(), Toast.LENGTH_SHORT).show();
 
                         Intent userAccountActivity = new Intent(Login.this, Home.class);
                         startActivity(userAccountActivity);
+                        finish();
                     }
                     else
                     {
-                        hideProgressBar();
-                        Toast.makeText(Login.this, "Some error occurred : "+task.getException(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(Login.this, "Incorrect Email or Password.", Toast.LENGTH_LONG).show();
                     }
                 }
             });
@@ -100,12 +96,5 @@ public class Login extends AppCompatActivity implements View.OnClickListener{
         startActivity(signupIntent);
     }
 
-    private void hideProgressBar() {
-        progessBarLayout.setVisibility(View.INVISIBLE);
-    }
-
-    private void showProgressBar() {
-        progessBarLayout.setVisibility(View.VISIBLE);
-    }
 
 }

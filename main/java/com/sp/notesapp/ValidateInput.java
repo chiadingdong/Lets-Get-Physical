@@ -18,12 +18,12 @@ public class ValidateInput {
     {
         if(email.length()==0)
         {
-            Toast.makeText(context, "Please enter your email ID!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please enter your email ID.", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) //validate the email format
         {
-            Toast.makeText(context, "Please enter a valid email ID!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please enter a valid email ID.", Toast.LENGTH_SHORT).show();
             return  false;
 
         }
@@ -39,7 +39,7 @@ public class ValidateInput {
     {
         if(password.length()==0)
         {
-            Toast.makeText(context, "Please enter a password!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Please enter a password.", Toast.LENGTH_SHORT).show();
             return false;
         }
         else if(password.length()<6)

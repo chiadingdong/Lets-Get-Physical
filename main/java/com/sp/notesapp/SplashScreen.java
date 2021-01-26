@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -11,6 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreen extends AppCompatActivity {
+    MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +23,11 @@ public class SplashScreen extends AppCompatActivity {
 
         //current user object = it is the currently logged in user. If not logged in, this is null.
         final FirebaseUser currentUser= firebaseAuth.getCurrentUser();
+
+
+        mp = MediaPlayer.create(getBaseContext(), R.raw.music);
+        mp.start(); //Starts your sound
+
 
 
         Handler handler = new Handler();
@@ -45,6 +52,14 @@ public class SplashScreen extends AppCompatActivity {
                 }
 
             }
-        },1500); //1.5 sec
+        },2000);
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mp.pause();
+    }
+
+
 }

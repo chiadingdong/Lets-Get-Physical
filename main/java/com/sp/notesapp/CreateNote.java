@@ -9,7 +9,9 @@ import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.ContentResolver;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -46,17 +48,19 @@ public class CreateNote extends AppCompatActivity {
 
     private EditText noteTitle,noteContent;
     private Button createNewNoteBtn;
+    private Button addPictureBtn;
+
     private CreateNote mContext;
+
+    ImageView selectedImage;
+    String currentPhotoPath;
+    StorageReference storageReference;
+    private Uri imageUri;
 
     //for camera & gallery
     public static final int CAMERA_PERM_CODE = 101;
     public static final int CAMERA_REQUEST_CODE = 102;
     public static final int GALLERY_REQUEST_CODE = 105;
-    ImageView selectedImage;
-    Button cameraBtn,galleryBtn;
-    String currentPhotoPath;
-    StorageReference storageReference;
-    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,28 +80,19 @@ public class CreateNote extends AppCompatActivity {
             }
         });
 
+        addPictureBtn = findViewById(R.id.addPictureBtn);
+        addPictureBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                selectImage();
+            }
+        });
 
         //for camera & gallery
         selectedImage = findViewById(R.id.displayImageView);
-        cameraBtn = findViewById(R.id.cameraBtn);
-        galleryBtn = findViewById(R.id.galleryBtn);
 
         storageReference = FirebaseStorage.getInstance().getReference();
 
-        cameraBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                askCameraPermissions();
-            }
-        });
-
-        galleryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                startActivityForResult(gallery, GALLERY_REQUEST_CODE);
-            }
-        });
     }
 
 
@@ -111,7 +106,7 @@ public class CreateNote extends AppCompatActivity {
 
         DatabaseReference notesReference = rootReference.child("Users").child(currentUser.getUid()).child("Notes"); // root/Users/{currentUserID}/Notes
 
-        DatabaseReference newNoteReference = notesReference.push();                           // root/Users/{currentUserID}/Notes/someRandomIdGeneratedByFirebase
+        DatabaseReference newNoteReference = notesReference.push();    // root/Users/{currentUserID}/Notes/someRandomIdGeneratedByFirebase
 
         //check for empty fields
         if (noteTitle.getText().toString().isEmpty()) {
@@ -139,6 +134,35 @@ public class CreateNote extends AppCompatActivity {
         }
     }
 
+
+    public void selectImage()
+    {
+        final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
+        AlertDialog.Builder builder = new AlertDialog.Builder(CreateNote.this);
+        builder.setTitle("Add Photo!");
+        builder.setItems(options,new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // TODO Auto-generated method stub
+                if(options[which].equals("Take Photo"))
+                {
+                    askCameraPermissions();
+                }
+                else if(options[which].equals("Choose from Gallery"))
+                {
+                    Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    startActivityForResult(gallery, GALLERY_REQUEST_CODE);
+                }
+                else if(options[which].equals("Cancel"))
+                {
+                    dialog.dismiss();
+                }
+
+            }
+        });
+        builder.show();
+    }
 
     //for camera & gallery
     private void askCameraPermissions() {

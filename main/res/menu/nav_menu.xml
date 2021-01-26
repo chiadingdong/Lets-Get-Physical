@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_icon"
+            android:title="Home" />
+
+        <item
+            android:id="@+id/nav_exercise"
+            android:icon="@drawable/ic_fitness"
+            android:title="Exercise" />
+
+        <item
+            android:id="@+id/nav_note"
+            android:icon="@drawable/ic_note"
+            android:title="Diary" />
+
+        <item
+            android:id="@+id/nav_location"
+            android:icon="@drawable/ic_location"
+            android:title="Location" />
+
+        <item
+            android:id="@+id/nav_planWorkOut"
+            android:icon="@drawable/ic_calendar"
+            android:title="Plan next workout!" />
+
+    </group>
+
+
+    <item android:title="Profile">
+
+        <menu>
+            <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/nav_account"
+                    android:icon="@drawable/ic_person"
+                    android:title="Account" />
+
+                <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_exit"
+                    android:title="Logout" />
+            </group>
+
+        </menu>
+
+
+    </item>
+
+
+</menu>

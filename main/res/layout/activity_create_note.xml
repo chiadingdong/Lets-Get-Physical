@@ -8,26 +8,28 @@
 
     <EditText
         android:id="@+id/noteTitle_ET"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Title"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/noteContent_ET"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:gravity="start|top"
         android:hint="Write notes here!"
-        android:inputType="textPersonName"
+        android:imeOptions="actionDone"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
         app:layout_constraintEnd_toEndOf="@+id/noteTitle_ET"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/noteTitle_ET"
@@ -35,7 +37,7 @@
 
     <Button
         android:id="@+id/createNote_btn"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Create!"
@@ -43,39 +45,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/noteContent_ET" />
 
-    <Button
-        android:id="@+id/cameraBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="156dp"
-        android:text="Camera"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/galleryBtn"
-        app:layout_constraintHorizontal_bias="0.848"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayImageView"
-        app:layout_constraintVertical_bias="0.077" />
-
-    <Button
-        android:id="@+id/galleryBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="156dp"
-        android:text="Gallery"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/displayImageView"
-        app:layout_constraintVertical_bias="0.077" />
-
     <ImageView
         android:id="@+id/displayImageView"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="392dp"
+        android:layout_marginBottom="512dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_image" />
+
+    <Button
+        android:id="@+id/addPictureBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Add a picture!"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayImageView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

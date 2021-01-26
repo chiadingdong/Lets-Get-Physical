@@ -8,39 +8,37 @@
 
     <EditText
         android:id="@+id/oldEmail_ET"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
         android:ems="10"
         android:hint="Please enter old email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/newEmail_ET"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Please enter new email"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/oldEmail_ET"
-        app:layout_constraintVertical_bias="0.117" />
+        app:layout_constraintEnd_toEndOf="@+id/oldEmail_ET"
+        app:layout_constraintStart_toStartOf="@+id/oldEmail_ET"
+        app:layout_constraintTop_toBottomOf="@+id/oldEmail_ET" />
 
     <Button
         android:id="@+id/updateEmail_btn"
-        android:layout_width="280dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/round_border"
+        android:drawableLeft="@drawable/ic_white_email"
         android:text="Update Email"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/newEmail_ET"
-        app:layout_constraintVertical_bias="0.211" />
+        app:layout_constraintEnd_toEndOf="@+id/newEmail_ET"
+        app:layout_constraintStart_toStartOf="@+id/newEmail_ET"
+        app:layout_constraintTop_toBottomOf="@+id/newEmail_ET" />
 </androidx.constraintlayout.widget.ConstraintLayout>
