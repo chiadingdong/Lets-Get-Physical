@@ -85,14 +85,12 @@ public class UserAccount extends AppCompatActivity implements View.OnClickListen
     } */
 
     private void showUpdatePasswordActivity() {
-        Toast.makeText(context, "Update Password here!", Toast.LENGTH_SHORT).show();
 
         Intent updatePasswordActivity = new Intent(UserAccount.this, UpdatePassword.class);
         startActivity(updatePasswordActivity);
     }
 
     private void showUpdateEmailActivity() {
-        Toast.makeText(context, "Update Email here!", Toast.LENGTH_SHORT).show();
 
         Intent updateEmailActivity = new Intent(UserAccount.this, UpdateEmail.class);
         startActivity(updateEmailActivity);

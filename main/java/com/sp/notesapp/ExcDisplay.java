@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class ExcDisplay extends AppCompatActivity {
 
-    private Button addExc;
+    //private Button addExc;
     private RecyclerView mRecyclerView;
     private ArrayList<ExcModel> excList = new ArrayList<>();
 
@@ -38,8 +38,8 @@ public class ExcDisplay extends AppCompatActivity {
 
         readExcFromFirebase();
 
-        addExc = findViewById(R.id.addExcBtn);
-        addExc.setOnClickListener(add_Exc);
+        //addExc = findViewById(R.id.addExcBtn);
+        //addExc.setOnClickListener(add_Exc);
     }
 
     private void readExcFromFirebase() {
@@ -87,12 +87,13 @@ public class ExcDisplay extends AppCompatActivity {
         });
     }
 
+    /*
     View.OnClickListener add_Exc = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             startActivity(new Intent(ExcDisplay.this,CreateExc.class));
         }
-    };
+    }; */
 
 
 }
