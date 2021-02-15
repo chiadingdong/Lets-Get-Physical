@@ -235,7 +235,7 @@ public class EditNote extends AppCompatActivity {
                         imageUri = uri;
                     }
                 });
-                Toast.makeText(EditNote.this, "Image Is Uploaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(EditNote.this, "Image Is Uploaded.", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

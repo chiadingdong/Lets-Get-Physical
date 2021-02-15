@@ -121,7 +121,7 @@ public class CreateNote extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(CreateNote.this, "Note submitted in Firebase.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateNote.this, "Note created successfully .", Toast.LENGTH_SHORT).show();
                             mContext.finish(); //finish this activity.
                         } else {
                             Toast.makeText(CreateNote.this, "Some error occurred :  " + task.getException(), Toast.LENGTH_SHORT).show();
@@ -226,7 +226,7 @@ public class CreateNote extends AppCompatActivity {
                         imageUri = uri;
                     }
                 });
-                Toast.makeText(CreateNote.this, "Image Is Uploaded.", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(CreateNote.this, "Image Is Uploaded.", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
